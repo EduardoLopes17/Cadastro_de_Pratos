@@ -23,7 +23,7 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
 
 
         <form action="public/cadastrar.php" method="POST">
-            
+
             <h2>Informe o seu usuario!</h2>
     
             <label for="nome">Nome Usuário:</label>
@@ -65,6 +65,8 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
                     <th>Preço</th>
                     <th>Categoria</th>
                     <th>Ações</th>
+                    <th>Usuário</th>
+
                 </tr>
                 <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
                     <tr>
@@ -78,6 +80,9 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
                             <a href="public/editar.php?id=<?php echo $prato["id"] ?>">Editar</a>
                             <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
                         </td>
+
+                        <td><?php echo $prato["Usuario"] ?></td>
+
                     </tr>
                 <?php } ?>
             </table>
