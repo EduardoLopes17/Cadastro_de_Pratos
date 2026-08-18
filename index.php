@@ -60,6 +60,8 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
                         <td><?php echo $prato["nome"] ?></td>
                         <td><?php echo $prato["descricao"] ?></td>
                         <td><?php echo $prato["preco"] ?></td>
+                        <td><?php echo $prato["categoria"] ?></td>
+ 
                         <td>
                             <a href="public/editar.php?id=<?php echo $prato["id"] ?>">Editar</a>
                             <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
