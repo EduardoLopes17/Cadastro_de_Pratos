@@ -20,8 +20,20 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
         <h1>CRUD - Restaurante</h1>
     </header>
     <main>
-        <h2>Adicione um novo prato!</h2>
+
+
         <form action="public/cadastrar.php" method="POST">
+            
+            <h2>Informe o seu usuario!</h2>
+    
+            <label for="nome">Nome Usuário:</label>
+            <input type="text" name="nome">
+            <br>
+            <label for="descricao">Email:</label>
+            <input type="text" name="email">
+           
+            <h2>Adicione um novo prato!</h2>
+
             <label for="nome">Nome:</label>
             <input type="text" name="nome">
             <br>
