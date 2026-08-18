@@ -7,11 +7,9 @@ $descricao = $_POST["descricao"];
 $preco = $_POST["preco"];
 $categoria = $_POST["categoria"];
 
-$sql = "INSERT INTO pratos (nome,descricao,preco,categoria) VALUES (? ,?,?,?)";
+$sql = "INSERT INTO pratos (nome,descricao,preco,categoria) VALUES ('$nomePrato','$descricao','$preco','$categoria')";
 
-$stmt = mysqli_prepare($conexao, $sql);
-mysqli_stmt_bind_param($stmt, "ssdss", $nomePrato, $descricao, $preco, $categoria);
-mysqli_stmt_execute($stmt);
+mysqli_query($conexao, $sql);
 
 header("Location: ../index.php");
 ?>
