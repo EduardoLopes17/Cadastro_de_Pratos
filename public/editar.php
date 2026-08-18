@@ -38,8 +38,15 @@ $prato =mysqli_fetch_assoc($resultado);
             <label for="preco">Preço:</label>
             <input type="number" name="preco" value="<?php echo $prato["preco"]?>" step="0.01">
             <br>
+
             <label for="categoria">Categoria:</label>
-            <input type="text" name="categoria" value="<?php echo $prato["categoria"]?>">
+            <select name="categoria" id="categoria">
+            <option value="entrada">Entrada</option>
+            <option value="prato_principal">Prato Principal</option>
+            <option value="sobremesa">Sobremesa</option>
+            <option value="bebida">Bebida</option>
+            </select>
+            
             <br>
             <button type="submit">Atualizar</button>
         </form>
