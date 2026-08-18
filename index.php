@@ -31,7 +31,7 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
             <label for="preco">Preço:</label>
             <input type="number" name="preco" step="0.01">
             <br>
-            
+
             <label for="categoria">Categoria:</label>
             <select name="categoria" id="categoria">
             <option value="entrada">Entrada</option>
@@ -51,6 +51,7 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Preço</th>
+                    <th>Categoria</th>
                     <th>Ações</th>
                 </tr>
                 <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
