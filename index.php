@@ -26,35 +26,12 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
 
             <h2>Informe o seu usuario!</h2>
     
-            <label for="nome">Nome Usuário:</label>
-            <input type="text" name="nome">
-            <br>
-            <label for="descricao">Email:</label>
-            <input type="text" name="email">
+             <button type="submit"><a href="public/cadastrar_usuario.php">Cadastrar Usuário</a></button>
            
-            <h2>Adicione um novo prato!</h2>
+ 
+             <button type="submit"><a href="public/cadastrar.php">Cadastrar Prato</a></button>
 
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome">
-            <br>
-            <label for="descricao">Descrição:</label>
-            <input type="text" name="descricao">
-            <br>
-            <label for="preco">Preço:</label>
-            <input type="number" name="preco" step="0.01">
-            <br>
-
-            <label for="categoria">Categoria:</label>
-            <select name="categoria" id="categoria">
-            <option value="entrada">Entrada</option>
-            <option value="prato_principal">Prato Principal</option>
-            <option value="sobremesa">Sobremesa</option>
-            <option value="bebida">Bebida</option>
-            </select>
-
-            <br>
-            <button type="submit">Cadastrar</button>
-        </form>
+            
         <div>
             <h2>Pratos Cadastrados</h2>
             <table>

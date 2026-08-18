@@ -12,7 +12,7 @@ CREATE TABLE pratos (
 
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(150) NOT NULL,
+    nomeUsuario VARCHAR(150) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     prato_id INT NOT NULL, 
     
