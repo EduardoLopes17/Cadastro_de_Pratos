@@ -2,12 +2,12 @@
 
 include "../infra/conexao.php";
 
-$nome_prato = $_POST["nome do prato"];
-$descricao = $_POST["descrição"];
-$preco = $_POST["preço"];
+$nomePrato = $_POST["nome"];
+$descricao = $_POST["descricao"];
+$preco = $_POST["preco"];
 $categoria = $_POST["categoria"];
 
-$sql = "INSERT INTO pratos (nome,descricao,preco,categoria) VALUES ('$nome_prato','$descricao','$preco','$categoria')";
+$sql = "INSERT INTO pratos (nome,descricao,preco,categoria) VALUES ('$nomePrato','$descricao','$preco','$categoria')";
 
 mysqli_query($conexao, $sql);
 
