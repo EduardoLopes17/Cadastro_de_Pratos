@@ -81,7 +81,6 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
                             <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
                         </td>
 
-                        <td><?php echo $prato["Usuario"] ?></td>
 
                     </tr>
                 <?php } ?>
