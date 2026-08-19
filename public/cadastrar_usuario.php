@@ -1,33 +1,123 @@
 <?php
 
-include "../infra/conexao.php";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    include "../infra/conexao.php";
 
-$nome = $_POST["nomeUsuario"];
-$email = $_POST["emailUsuario"];
-$senha = $_POST["senhaUsuario"];
+    $nome = mysqli_real_escape_string($conexao, $_POST["nomeUsuario"]);
+    $email = mysqli_real_escape_string($conexao, $_POST["emailUsuario"]);
+    $senha = mysqli_real_escape_string($conexao, $_POST["senhaUsuario"]);
 
-$sql = "INSERT INTO usuarios (nome,email,senha) VALUES ('$nome','$email','$senha')";
+    // Validação básica
+    if (empty($nome) || empty($email) || empty($senha)) {
+        $erro = "Todos os campos são obrigatórios!";
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erro = "Email inválido!";
+    } else {
+        $sql = "INSERT INTO usuarios (nomeUsuario, email, senha) VALUES ('$nome', '$email', '$senha')";
 
-mysqli_query($conexao, $sql);
+        if (mysqli_query($conexao, $sql)) {
+            $sucesso = "Usuário cadastrado com sucesso!";
+            header("Refresh: 2; url=../index.php");
+        } else {
+            if (strpos(mysqli_error($conexao), "Duplicate entry") !== false) {
+                $erro = "Este email já está cadastrado!";
+            } else {
+                $erro = "Erro ao cadastrar usuário: " . mysqli_error($conexao);
+            }
+        }
+    }
+}
 
-header("Location: ../index.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Cadastrar Usuário - CRUD Restaurante</title>
+    <link rel="stylesheet" href="../style/style.css">
 </head>
+
 <body>
+    <header>
+        <h1>🍽️ CRUD - Restaurante</h1>
+    </header>
+
     <main>
-        <h2>Informe o seu usuario!</h2>
-    
-            
-           
- 
-           
+        <section class="formulario-container">
+            <div class="voltar">
+                <a href="../index.php">← Voltar</a>
+            </div>
+
+            <h2>👤 Cadastrar Novo Usuário</h2>
+
+            <?php if (isset($erro)) { ?>
+                <div class="alerta alerta-erro">
+                    ❌ <?php echo $erro ?>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($sucesso)) { ?>
+                <div class="alerta alerta-sucesso">
+                    ✅ <?php echo $sucesso ?><br>
+                    <small>Redirecionando...</small>
+                </div>
+            <?php } ?>
+
+            <form method="POST" class="formulario">
+                <div class="grupo-form">
+                    <label for="nomeUsuario">Nome Completo:</label>
+                    <input 
+                        type="text" 
+                        id="nomeUsuario"
+                        name="nomeUsuario" 
+                        placeholder="Digite seu nome completo"
+                        required
+                        value="<?php echo isset($_POST['nomeUsuario']) ? htmlspecialchars($_POST['nomeUsuario']) : '' ?>"
+                    >
+                </div>
+
+                <div class="grupo-form">
+                    <label for="emailUsuario">Email:</label>
+                    <input 
+                        type="email" 
+                        id="emailUsuario"
+                        name="emailUsuario" 
+                        placeholder="seu.email@exemplo.com"
+                        required
+                        value="<?php echo isset($_POST['emailUsuario']) ? htmlspecialchars($_POST['emailUsuario']) : '' ?>"
+                    >
+                </div>
+
+                <div class="grupo-form">
+                    <label for="senhaUsuario">Senha:</label>
+                    <input 
+                        type="password" 
+                        id="senhaUsuario"
+                        name="senhaUsuario" 
+                        placeholder="Digite uma senha segura"
+                        required
+                    >
+                </div>
+
+                <div class="grupo-botoes">
+                    <button type="submit" class="btn btn-sucesso">
+                        ✅ Cadastrar Usuário
+                    </button>
+                    <a href="../index.php" class="btn btn-cancelar">
+                        ❌ Cancelar
+                    </a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Cadastro de Restaurante | Eduardo Lopes</p>
+    </footer>
 
 </body>
+
 </html>

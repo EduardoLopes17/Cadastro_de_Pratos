@@ -19,57 +19,64 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
     <header>
         <h1>CRUD - Restaurante</h1>
     </header>
-    <main>
 
 
-        <form action="public/cadastrar.php" method="POST">
 
-            <h2>Informe o seu usuario!</h2>
-    
-             <button type="submit"><a href="public/cadastrar_usuario.php">Cadastrar Usuário</a></button>
-           
+     <main>
+        <section class="botoes-navegacao">
+            <h2>O que você deseja fazer?</h2>
+            <div class="container-botoes">
+                <a href="public/cadastrar_usuario.php" class="btn btn-usuario">
+                    Cadastrar Usuário
+                </a>
+                <a href="public/cadastrar.php" class="btn btn-prato">
+                    Cadastrar Prato
+                </a>
+            </div>
+        </section>
  
-             <button type="submit"><a href="public/cadastrar.php">Cadastrar Prato</a></button>
-
-            
-        <div>
+        <section class="pratos-cadastrados">
             <h2>Pratos Cadastrados</h2>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>Categoria</th>
-                    <th>Ações</th>
-                    <th>Usuário</th>
-
-                </tr>
-                <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
-                    <tr>
-                        <td><?php echo $prato["id"] ?></td>
-                        <td><?php echo $prato["nome"] ?></td>
-                        <td><?php echo $prato["descricao"] ?></td>
-                        <td><?php echo $prato["preco"] ?></td>
-                        <td><?php echo $prato["categoria"] ?></td>
+               <?php if (mysqli_num_rows($pratos) > 0) { ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Preço</th>
+                            <th>Categoria</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($prato = mysqli_fetch_assoc($pratos)) { ?>
+                            <tr>
+                                <td><?php echo $prato["id"] ?></td>
+                                <td><?php echo $prato["nome"] ?></td>
+                                <td><?php echo $prato["descricao"] ?></td>
+                                <td>R$ <?php echo number_format($prato["preco"], 2, ',', '.') ?></td>
+                                <td><?php echo ucfirst(str_replace('_', ' ', $prato["categoria"])) ?></td>
+                                <td class="acoes">
+                                    <a href="public/editar.php?id=<?php echo $prato["id"] ?>" class="btn-editar">Editar</a>
+                                    <a href="public/excluir.php?id=<?php echo $prato["id"] ?>" class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?php } else { ?>
+                <p class="vazio">Nenhum prato cadastrado ainda. Clique em "Cadastrar Prato" para começar! 👆</p>
+            <?php } ?>
+        </section>
  
-                        <td>
-                            <a href="public/editar.php?id=<?php echo $prato["id"] ?>">Editar</a>
-                            <a href="public/excluir.php?id=<?php echo $prato["id"] ?>">Excluir</a>
-                        </td>
-
-
-                    </tr>
-                <?php } ?>
-            </table>
-        </div>
-
     </main>
+ 
     <footer>
-
+        <p>&copy; 2024 Sistema de Cadastro de Restaurante | Eduardo Lopes</p>
     </footer>
-
-
+ 
 </body>
-
+ 
 </html>
+ 
