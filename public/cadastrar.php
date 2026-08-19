@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <header>
-        <h1>🍽️ CRUD - Restaurante</h1>
+        <h1> CRUD - Restaurante</h1>
     </header>
 
     <main>
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a href="../index.php">← Voltar</a>
             </div>
 
-            <h2>🍽️ Adicionar Novo Prato</h2>
+            <h2> Adicionar Novo Prato</h2>
 
             <?php if (isset($erro)) { ?>
                 <div class="alerta alerta-erro">
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <?php if (isset($sucesso)) { ?>
                 <div class="alerta alerta-sucesso">
-                    ✅ <?php echo $sucesso ?><br>
+                     <?php echo $sucesso ?><br>
                     <small>Redirecionando...</small>
                 </div>
             <?php } ?>

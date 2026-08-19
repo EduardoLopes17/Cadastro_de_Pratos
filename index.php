@@ -71,10 +71,7 @@ $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
         </section>
  
     </main>
- 
-    <footer>
-        <p>&copy; 2024 Sistema de Cadastro de Restaurante | Eduardo Lopes</p>
-    </footer>
+
  
 </body>
  

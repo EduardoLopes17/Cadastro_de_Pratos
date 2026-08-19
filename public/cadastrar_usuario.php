@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <header>
-        <h1>🍽️ CRUD - Restaurante</h1>
+        <h1> CRUD - Restaurante</h1>
     </header>
 
     <main>
@@ -51,17 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a href="../index.php">← Voltar</a>
             </div>
 
-            <h2>👤 Cadastrar Novo Usuário</h2>
+            <h2> Cadastrar Novo Usuário</h2>
 
             <?php if (isset($erro)) { ?>
                 <div class="alerta alerta-erro">
-                    ❌ <?php echo $erro ?>
+                     <?php echo $erro ?>
                 </div>
             <?php } ?>
 
             <?php if (isset($sucesso)) { ?>
                 <div class="alerta alerta-sucesso">
-                    ✅ <?php echo $sucesso ?><br>
+                     <?php echo $sucesso ?><br>
                     <small>Redirecionando...</small>
                 </div>
             <?php } ?>
@@ -107,16 +107,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         ✅ Cadastrar Usuário
                     </button>
                     <a href="../index.php" class="btn btn-cancelar">
-                        ❌ Cancelar
+                         Cancelar
                     </a>
                 </div>
             </form>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Sistema de Cadastro de Restaurante | Eduardo Lopes</p>
-    </footer>
 
 </body>
 
