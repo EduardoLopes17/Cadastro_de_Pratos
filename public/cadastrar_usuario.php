@@ -5,9 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nome = mysqli_real_escape_string($conexao, $_POST["nomeUsuario"]);
     $email = mysqli_real_escape_string($conexao, $_POST["emailUsuario"]);
-    $senha = mysqli_real_escape_string($conexao, $_POST["senhaUsuario"]);
-
-    // Validação básica
+    
     if (empty($nome) || empty($email) || empty($senha)) {
         $erro = "Todos os campos são obrigatórios!";
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -91,20 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     >
                 </div>
 
-                <div class="grupo-form">
-                    <label for="senhaUsuario">Senha:</label>
-                    <input 
-                        type="password" 
-                        id="senhaUsuario"
-                        name="senhaUsuario" 
-                        placeholder="Digite uma senha segura"
-                        required
-                    >
-                </div>
 
                 <div class="grupo-botoes">
                     <button type="submit" class="btn btn-sucesso">
-                        ✅ Cadastrar Usuário
+                         Cadastrar Usuário
                     </button>
                     <a href="../index.php" class="btn btn-cancelar">
                          Cancelar
